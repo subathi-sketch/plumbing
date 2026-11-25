@@ -1,0 +1,797 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>BlueRidge Plumbing & Drain | 24/7 Plumbers You Can Trust</title>
+<meta name="description" content="BlueRidge Plumbing & Drain: licensed plumbers for repairs, water heaters, drain cleaning, remodels and commercial plumbing. Same-day service, upfront pricing.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#0a1622;--ink2:#10243a;--line:#223a55;--accent:#1e90ff;--accent2:#0b6fd1;--mute:#9db3c8;--max:1200px}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:Montserrat,system-ui,sans-serif;color:#13202e;background:#fff;line-height:1.65;-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}img{display:block;max-width:100%}
+.wrap{max-width:var(--max);margin:0 auto;padding:0 28px}
+h1,h2,h3{font-family:'Space Grotesk',system-ui,sans-serif;letter-spacing:-.025em;line-height:1.06;font-weight:700}
+h2{font-size:clamp(2rem,4.2vw,3.2rem)!important}
+h3{font-size:1.15rem!important}
+.hero h1{font-size:clamp(2.5rem,6.2vw,5rem)!important;font-weight:700;line-height:1.02;letter-spacing:-.035em}
+.sheet h3{font-size:1.7rem!important}
+.eyebrow{font-size:.75rem;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:var(--accent);margin-bottom:14px}
+.eyebrow::before{content:"";display:inline-block;width:9px;height:9px;background:var(--accent);margin-right:12px;vertical-align:1px}
+
+/* smooth scroll (Lenis) */
+html.lenis,html.lenis body{height:auto}
+.lenis.lenis-smooth{scroll-behavior:auto!important}
+.lenis.lenis-stopped{overflow:hidden}
+
+/* rolling word in the hero headline: letters slide up/out one by one */
+.roll{display:inline-block;overflow:hidden;vertical-align:bottom;padding-bottom:.1em;margin-bottom:-.1em;color:#7cc4ff}
+.roll .l{display:inline-block;transform:translateY(0);transition:transform .6s cubic-bezier(.7,0,.2,1)}
+.roll .l.pre{transform:translateY(115%);transition:none}
+.roll .l.out{transform:translateY(-115%)}
+
+/* headings: words slide up from behind a mask */
+.split .w{display:inline-block;overflow:hidden;vertical-align:top;padding-bottom:.1em;margin-bottom:-.1em}
+.split .w>span{display:inline-block;transform:translateY(112%);transition:transform .9s cubic-bezier(.2,.7,.2,1)}
+.split.in .w>span{transform:none}
+
+
+/* parallax photos: image is taller than its frame and drifts as you scroll */
+.px{overflow:hidden;position:relative}
+.px img{display:block;width:100%;height:122%;object-fit:cover;will-change:transform;margin-top:-11%}
+
+@keyframes starturn{to{transform:rotate(360deg)}}
+
+/* rotating circular badge (replaces the SCROLL hint) */
+.hero .spin{position:absolute;right:28px;bottom:24px;width:112px;height:112px;display:grid;place-items:center;color:#fff}
+.hero .spin>svg{position:absolute;inset:0;width:100%;height:100%;animation:starturn 16s linear infinite}
+.hero .spin text{fill:#fff;font:700 9.4px Montserrat;letter-spacing:.22em}
+.hero .spin i{width:46px;height:46px;border-radius:50%;background:var(--accent);display:grid;place-items:center;transition:transform .35s,background .35s}
+.hero .spin i svg{width:16px;height:16px;fill:none;stroke:#fff;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
+.hero .spin:hover i{transform:scale(1.18);background:var(--accent2)}
+
+/* header CTA: pill with a round arrow chip that spins on hover */
+.nav .btn.cta{display:inline-flex;align-items:center;gap:12px;padding:6px 6px 6px 20px;border-radius:40px;background:#fff;color:var(--ink);border-color:#fff}
+.nav .btn.cta:hover{background:var(--accent);border-color:var(--accent);color:#fff}
+.nav .btn.cta .ar{width:34px;height:34px;border-radius:50%;background:var(--ink);display:grid;place-items:center;transition:transform .4s,background .3s}
+.nav .btn.cta .ar svg{width:12px;height:12px;fill:none;stroke:#fff;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
+.nav .btn.cta:hover .ar{transform:rotate(45deg);background:#fff}
+.nav .btn.cta:hover .ar svg{stroke:var(--accent)}
+@media(max-width:860px){.hero .spin{width:88px;height:88px;right:16px}.hero .spin i{width:36px;height:36px}}
+
+
+/* ===== services carousel (coverflow): big centre card, smaller neighbours ===== */
+.svcs{position:relative;padding:110px 0 100px;overflow:hidden;background:#eaf1f9;--mx:0;--my:0}
+.svcs::before{content:"";position:absolute;inset:0;background:linear-gradient(135deg,#0d2d52 0%,#0a1622 70%);clip-path:polygon(0 0,86% 0,60% 56%,0 56%);z-index:0}
+.sv-blob{position:absolute;border-radius:50%;filter:blur(60px);pointer-events:none;z-index:0;transition:transform .6s cubic-bezier(.2,.7,.2,1)}
+.sv-blob.b1{width:380px;height:380px;left:-90px;top:60px;background:rgba(30,144,255,.38);transform:translate(calc(var(--mx)*30px),calc(var(--my)*24px))}
+.sv-blob.b2{width:300px;height:300px;right:-60px;bottom:40px;background:rgba(30,144,255,.22);transform:translate(calc(var(--mx)*-34px),calc(var(--my)*-22px))}
+.sv-head{position:relative;z-index:2;text-align:center;color:#fff;margin-bottom:34px}
+.sv-head .eyebrow{display:inline-block}
+.sv-head h2{color:#fff;margin:0 0 12px;font-size:clamp(2.2rem,4.4vw,3.4rem)!important}
+.sv-head p{color:#c9d8ea;max-width:440px;margin:0 auto}
+.cv{position:relative;z-index:2;height:430px;perspective:1500px;outline:none}
+.sc{position:absolute;left:50%;top:50%;width:min(480px,84%);--x:0px;--s:1;--ry:0deg;--tx:0deg;--ty:0deg;
+ transform:translate(-50%,-50%) translateX(var(--x)) scale(var(--s)) rotateY(calc(var(--ry) + var(--ty))) rotateX(var(--tx));
+ transition:transform .9s cubic-bezier(.2,.8,.2,1),opacity .55s,box-shadow .6s;
+ background:#fff;border-radius:22px;padding:30px;display:flex;align-items:center;gap:24px;box-shadow:0 10px 28px rgba(10,22,34,.14);cursor:pointer;overflow:hidden;will-change:transform}
+.sc.tilting{transition:transform .12s linear,opacity .55s,box-shadow .6s}
+.sc.is-on{box-shadow:0 34px 80px rgba(8,28,58,.45);cursor:default}
+.sc.is-side{filter:saturate(.85)}
+.sc.is-side:hover{--s:.84}
+.sc-ic{flex:0 0 96px;height:96px}
+.sc.is-on .sc-ic{flex-basis:118px;height:118px;animation:floaty 3.4s ease-in-out infinite}
+.sc-ic svg{width:100%;height:100%;overflow:visible}
+@keyframes floaty{50%{transform:translateY(-9px) rotate(-3deg)}}
+.sc-tx{min-width:0}
+.sc h3{font-size:1.2rem!important;margin:0 0 8px;color:var(--ink)}
+.sc.is-on h3{font-size:1.75rem!important}
+.sc p{font-size:.86rem;color:#4a5a6b;line-height:1.55;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
+.sc.is-on p{font-size:1.02rem;-webkit-line-clamp:4}
+.sc-ln{display:inline-flex;align-items:center;gap:8px;margin-top:14px;font-weight:700;font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;color:var(--accent2)}
+.sc-ln svg{width:14px;height:14px;fill:none;stroke:currentColor;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round;transition:transform .3s}
+.sc-ln:hover svg{transform:translateX(6px)}
+.sc.is-on .sc-tx>*{animation:scUp .7s cubic-bezier(.2,.8,.2,1) both}
+.sc.is-on .sc-tx>*:nth-child(2){animation-delay:.08s}.sc.is-on .sc-tx>*:nth-child(3){animation-delay:.16s}
+@keyframes scUp{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
+.sc::after{content:"";position:absolute;inset:0;background:linear-gradient(105deg,transparent 35%,rgba(255,255,255,.75) 50%,transparent 65%);transform:translateX(-130%);pointer-events:none}
+.sc.is-on::after{animation:shine 1.2s .2s ease-out}
+@keyframes shine{to{transform:translateX(130%)}}
+.sc-pg{position:absolute;left:0;bottom:0;height:4px;width:0;background:linear-gradient(90deg,var(--accent),#7cc4ff)}
+.sc.is-on .sc-pg{animation:svfill var(--dur,5200ms) linear forwards}
+.cv.paused .sc-pg{animation-play-state:paused}
+@keyframes svfill{to{width:100%}}
+.cv-wrap{position:relative;max-width:1280px;margin:0 auto}
+.cv-arrow{position:absolute;z-index:11;top:50%;margin-top:-29px;width:58px;height:58px;border-radius:50%;border:0;background:#fff;color:var(--ink);display:grid;place-items:center;cursor:pointer;box-shadow:0 10px 26px rgba(10,22,34,.28);transition:transform .25s,background .25s,color .25s}
+.cv-arrow:hover{background:var(--accent);color:#fff;transform:scale(1.1)}
+.cv-arrow svg{width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round}
+.cv-arrow.prev{left:calc(14px - max(0px,(100vw - 1280px)/2))}.cv-arrow.next{right:calc(14px - max(0px,(100vw - 1280px)/2))}
+.cv-foot{position:relative;z-index:2;display:flex;align-items:center;justify-content:center;gap:22px;margin-top:26px}
+.cv-count{font-family:'Space Grotesk',sans-serif;font-weight:700;letter-spacing:.06em;color:var(--ink)}
+.cv-dots{display:flex;gap:8px}
+.cv-dots button{width:10px;height:10px;border-radius:10px;border:0;background:#b7c8da;cursor:pointer;padding:0;transition:width .4s,background .3s}
+.cv-dots button.on{width:38px;background:var(--accent)}
+@media(max-width:860px){.cv{height:400px}.sc{padding:22px;gap:16px;width:86%}.sc-ic{flex-basis:70px;height:70px}.sc.is-on .sc-ic{flex-basis:80px;height:80px}.sc.is-on h3{font-size:1.3rem!important}.cv-arrow{width:46px;height:46px;top:auto;bottom:-62px;margin-top:0}.cv-arrow.prev{left:calc(50% - 130px)}.cv-arrow.next{right:calc(50% - 130px)}.cv-foot{margin-top:70px}}
+
+/* promise statement: words brighten as you scroll */
+.statement{position:relative;background:var(--ink);color:#fff;padding:140px 0;overflow:hidden}
+.statement::before{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(10,22,34,.94),rgba(10,22,34,.80) 60%,rgba(10,22,34,.94)),url(https://images.unsplash.com/photo-1761758674188-2b8e4c89c5e2?auto=format&fit=crop&w=1600&q=60) center/cover}
+.pwrap{position:relative;text-align:center}
+.pwrap .eyebrow{display:inline-block}
+.statement .scrub{font-family:'Space Grotesk',sans-serif;font-size:clamp(2.1rem,4.6vw,4rem);font-weight:700;line-height:1.08;letter-spacing:-.03em;max-width:1000px;margin:8px auto 72px}
+.scrub span{opacity:.16;transition:opacity .25s}
+.pcols{display:grid;grid-template-columns:repeat(3,1fr);border-top:1px solid rgba(255,255,255,.2);text-align:left}
+.pcol{position:relative;padding:40px 38px 34px;border-right:1px solid rgba(255,255,255,.2);transition:background .35s}
+.pcol:last-child{border-right:0}
+.pcol:hover{background:rgba(30,144,255,.10)}
+.pcol b{position:absolute;right:30px;top:24px;font-family:'Space Grotesk',sans-serif;font-size:3rem;line-height:1;font-weight:700;color:rgba(255,255,255,.09);transition:color .35s}
+.pcol:hover b{color:rgba(30,144,255,.55)}
+.pcol .pi{width:58px;height:58px;border-radius:50%;border:1.5px solid rgba(124,196,255,.55);display:grid;place-items:center;margin-bottom:24px;transition:background .35s,border-color .35s}
+.pcol:hover .pi{background:var(--accent);border-color:var(--accent)}
+.pcol .pi svg{width:26px;height:26px;fill:none;stroke:#7cc4ff;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round;transition:stroke .35s}
+.pcol:hover .pi svg{stroke:#fff}
+.pcol h4{font-family:'Space Grotesk',sans-serif;font-size:1.4rem;letter-spacing:-.01em;margin-bottom:8px}
+.pcol p{font-size:.92rem;color:var(--mute);max-width:320px}
+.pcta{margin-top:54px;display:flex;gap:16px;justify-content:center;flex-wrap:wrap}
+
+/* numbered service cards */
+.svc{position:relative}
+.svc .num{position:absolute;top:14px;right:16px;z-index:2;font:700 .78rem Montserrat;letter-spacing:.14em;color:#fff;background:rgba(10,22,34,.7);padding:5px 10px}
+.svc img{transition:transform .6s}.svc:hover img{transform:scale(1.06)}
+.svc{overflow:hidden}
+.btn{display:inline-block;background:var(--accent);color:#fff;font:700 .78rem Montserrat;letter-spacing:.12em;text-transform:uppercase;padding:15px 28px;border:2px solid var(--accent);transition:.2s;cursor:pointer}
+.btn:hover{background:transparent;color:var(--accent)}
+.btn.ghost{background:transparent;border-color:#fff;color:#fff}.btn.ghost:hover{background:#fff;color:var(--ink)}
+
+/* header */
+.topbar{background:var(--accent2);color:#fff;font-size:.75rem;font-weight:600;letter-spacing:.06em;text-align:center;padding:8px 12px;position:relative;z-index:60}
+header{position:fixed;left:0;right:0;top:34px;z-index:50;transition:.3s}
+header.solid{top:0;background:rgba(10,22,34,.96);backdrop-filter:blur(8px);box-shadow:0 1px 0 var(--line)}
+.nav{display:flex;align-items:center;justify-content:space-between;height:76px;color:#fff}
+.logo{font-weight:800;letter-spacing:.1em;font-size:.95rem;display:flex;align-items:center;gap:10px}
+.logo svg{width:28px;height:28px}
+.nav ul{display:flex;gap:30px;list-style:none;align-items:center}
+.nav a{font-size:.72rem;font-weight:600;letter-spacing:.16em;text-transform:uppercase}
+.nav a:hover{color:var(--accent)}
+.nav .btn{padding:11px 18px;color:#fff}.nav .btn:hover{color:#fff;background:var(--accent2)}
+.burger{display:none;background:none;border:0;color:#fff;font-size:1.6rem;cursor:pointer}
+
+/* hero */
+.hero{position:relative;height:380vh;color:#fff;background:var(--ink)}
+.hero-pin{position:sticky;top:0;height:100vh;overflow:hidden}
+.hero-layer{position:absolute;inset:-4%;background-size:cover;background-position:center;opacity:0;transition:opacity .9s ease;will-change:transform,opacity}
+.hero-layer.on{opacity:1}
+.hero-layer video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.hero-shade{position:absolute;inset:0;background:rgba(10,22,34,.55);transition:background .2s}
+.hero .in{position:absolute;inset:0;display:flex;flex-direction:column;align-items:flex-start;justify-content:center;text-align:left;padding:90px max(28px,calc((100vw - var(--max))/2 + 28px)) 70px}
+.hero h1{font-size:clamp(2.2rem,5.6vw,4.4rem);font-weight:800;margin-bottom:22px;max-width:820px}
+.hero h1 span{color:#7cc4ff}
+.hero .in{text-shadow:0 2px 18px rgba(5,12,20,.55)}
+.hero p{font-size:1.05rem;opacity:.95;margin:0 0 32px;max-width:600px}
+.hero .cta{display:flex;gap:16px;flex-wrap:wrap;justify-content:flex-start}
+.hero .in>*{opacity:0;transform:translateY(24px)}
+body.ready .hero .in>*{animation:rise .9s cubic-bezier(.2,.7,.2,1) forwards}
+body.ready .hero .in>*:nth-child(1){animation-delay:.1s}
+body.ready .hero .in>*:nth-child(3){animation-delay:1.3s}body.ready .hero .in>*:nth-child(4){animation-delay:1.5s}body.ready .hero .in>*:nth-child(5){animation-delay:1.7s}
+@keyframes rise{to{opacity:1;transform:none}}
+/* headline: each word sharpens out of a blur, one after another */
+.hero .in>h1{opacity:1;transform:none;animation:none!important}
+.bw{display:inline-block;opacity:0;filter:blur(14px);transform:translateY(.22em)}
+body.ready .bw{animation:blurIn 1.1s cubic-bezier(.2,.7,.2,1) forwards;animation-delay:calc(var(--i)*120ms + .3s)}
+@keyframes blurIn{to{opacity:1;filter:blur(0);transform:none}}
+
+/* preloader: a hammer strikes a pipe on a loop, sparks fly, progress bar fills */
+.loader{position:fixed;inset:0;z-index:300;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:26px;color:#fff;overflow:hidden;
+ background:radial-gradient(circle at 50% 40%,#16385c 0%,#0c1c2e 58%,#070f19 100%);
+ transition:transform 1.05s cubic-bezier(.76,0,.24,1),border-radius 1.05s cubic-bezier(.76,0,.24,1)}
+.loader.hide{transform:translateY(-100%);border-radius:0 0 50% 50%/0 0 14vh 14vh}
+.loader .hwrap{width:min(460px,86vw)}
+.loader .hsvg{width:100%;height:auto;overflow:visible;display:block}
+.loader .hammer{animation:swing .95s infinite}
+@keyframes swing{
+ 0%{transform:rotate(58deg);animation-timing-function:cubic-bezier(.55,0,1,.6)}
+ 38%{transform:rotate(0deg);animation-timing-function:ease-out}
+ 46%{transform:rotate(9deg);animation-timing-function:ease-in}
+ 54%{transform:rotate(0deg);animation-timing-function:ease-in-out}
+ 100%{transform:rotate(58deg)}}
+.loader .pipe{animation:jolt .95s infinite}
+@keyframes jolt{0%,37%{transform:translateY(0)}39%{transform:translateY(4px)}45%{transform:translateY(-1px)}52%,100%{transform:translateY(0)}}
+.loader .sp{transform-box:fill-box;transform-origin:center;stroke:#ffb347;stroke-width:3.5;stroke-linecap:round;animation:spark .95s infinite;opacity:0}
+@keyframes spark{0%,37%{opacity:0;transform:scale(.2)}40%{opacity:1;transform:scale(.9)}62%{opacity:0;transform:scale(1.7)}100%{opacity:0;transform:scale(1.7)}}
+.loader .hbar{width:min(360px,70vw);height:6px;border-radius:6px;background:rgba(255,255,255,.12);overflow:hidden}
+.loader .hbar i{display:block;height:100%;width:0;border-radius:6px;background:linear-gradient(90deg,#1e90ff,#7cc4ff);box-shadow:0 0 14px rgba(30,144,255,.8);transition:width 2.2s cubic-bezier(.45,.05,.25,1)}
+.loader.go .hbar i{width:100%}
+.loader .hrow{display:flex;align-items:center;gap:22px;text-align:left}
+.loader .lnum{font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:2.8rem;line-height:1;min-width:92px;text-align:right;color:#fff}
+.loader .lbrand{font-size:.74rem;letter-spacing:.3em;text-transform:uppercase;color:#cfdcea;border-left:2px solid var(--accent);padding-left:20px}
+.loader .lbrand b{color:#fff;font-weight:800}
+.loader .lbrand span{display:block;margin-top:8px;font-size:.6rem;letter-spacing:.2em;color:#7f93a8}
+@media(max-width:520px){.loader .hrow{flex-direction:column;gap:10px;text-align:center}.loader .lnum{min-width:0;text-align:center}.loader .lbrand{border:0;padding:0}}
+.loader::before{content:"";position:absolute;left:50%;top:-10%;width:90vmin;height:90vmin;transform:translateX(-50%);background:radial-gradient(closest-side,rgba(124,196,255,.20),transparent);pointer-events:none}
+.loader .hsvg{filter:drop-shadow(0 22px 30px rgba(0,0,0,.45))}
+.loader .swoosh{opacity:0;animation:sw .95s infinite}
+@keyframes sw{0%,12%{opacity:0}28%{opacity:.9}39%{opacity:.5}46%,100%{opacity:0}}
+.loader .flash,.loader .shock{opacity:0;transform-box:fill-box;transform-origin:center}
+.loader .flash{animation:fl .95s infinite}
+@keyframes fl{0%,37%{opacity:0;transform:scale(.4)}40%{opacity:1;transform:scale(1)}60%{opacity:0;transform:scale(1.6)}100%{opacity:0}}
+.loader .shock{animation:shk .95s infinite}
+@keyframes shk{0%,38%{opacity:0;transform:scale(.3)}41%{opacity:.9}72%{opacity:0;transform:scale(3.4)}100%{opacity:0}}
+.loader .sp{filter:drop-shadow(0 0 5px #ffb347)}
+.loader .sp line:nth-child(3n){stroke:#fff}
+.loader .hbar i{position:relative;overflow:hidden}
+.loader .hbar i::after{content:"";position:absolute;inset:0;background:linear-gradient(100deg,transparent 30%,rgba(255,255,255,.65) 50%,transparent 70%);transform:translateX(-100%);animation:gloss 1.3s linear infinite}
+@keyframes gloss{to{transform:translateX(100%)}}
+html.loading,html.loading body{overflow:hidden}
+
+.hero .hint{position:absolute;bottom:26px;right:28px;font-size:.65rem;letter-spacing:.3em;opacity:.7}
+.hero .tag{position:absolute;left:28px;bottom:26px;display:flex;align-items:center;gap:10px;font-size:.7rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;background:rgba(10,22,34,.7);backdrop-filter:blur(6px);padding:10px 16px;border-left:3px solid var(--accent)}
+.hero .tag i{width:8px;height:8px;border-radius:50%;background:#ff4d4d;animation:rec 1.2s infinite}
+.hero .tag b{color:var(--accent);margin-left:6px}
+@keyframes rec{50%{opacity:.25}}
+.hero .bar{position:absolute;left:0;bottom:0;height:4px;width:0;background:var(--accent)}
+.badges{display:flex;gap:26px;flex-wrap:wrap;justify-content:flex-start;margin-top:40px;font-size:.72rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#cfdcea}
+.badges span::before{content:"\2713 ";color:var(--accent)}
+
+/* stats */
+.stats{background:#fff;padding:120px 0 110px}
+.stats .srow{display:grid;grid-template-columns:1fr 1.05fr;gap:80px;align-items:center}
+.stats .photo{position:relative}
+.stats .photo::before{content:"";position:absolute;left:-18px;top:-18px;right:18px;bottom:18px;border:3px solid var(--accent);z-index:0}
+.stats .photo .px{position:relative;z-index:1;height:560px}
+.stats .badge{position:absolute;z-index:2;right:-26px;bottom:34px;background:var(--ink);color:#fff;padding:22px 28px;display:flex;align-items:center;gap:16px;box-shadow:0 18px 40px rgba(10,22,34,.3)}
+.stats .badge .dot{width:12px;height:12px;border-radius:50%;background:#2ecc71;box-shadow:0 0 0 6px rgba(46,204,113,.2);animation:rec 1.6s infinite}
+.stats .badge small{display:block;font-size:.65rem;letter-spacing:.18em;text-transform:uppercase;color:var(--mute)}
+.stats .badge b{font-family:'Space Grotesk',sans-serif;font-size:1.4rem;letter-spacing:-.01em;line-height:1.1}
+.stats-head h2{font-size:clamp(2.2rem,4.2vw,3.4rem)!important;margin-bottom:18px}
+.stats-head p{color:#4a5a6b;max-width:480px;margin-bottom:44px}
+.stats .grid{display:grid;grid-template-columns:1fr 1fr;column-gap:44px;row-gap:6px}
+.stat{padding:28px 0 26px;border-top:2px solid #e3eaf2;position:relative}
+.stat::before{content:"";position:absolute;left:0;top:-2px;width:0;height:2px;background:var(--accent);transition:width .6s}
+.stat:hover::before,.stat.in::before{width:48px}
+.stat:hover::before{width:100%}
+.stat b{display:block;font-family:'Space Grotesk',sans-serif;font-size:clamp(3rem,5vw,4.3rem);font-weight:700;line-height:.95;color:var(--ink);letter-spacing:-.04em}
+.stat b small{font-size:.55em;color:var(--accent);margin-left:2px;font-weight:800}
+.stat strong{display:block;margin:12px 0 4px;font-size:.78rem;letter-spacing:.16em;text-transform:uppercase;color:var(--ink)}
+.stat span{display:block;font-size:.86rem;line-height:1.55;color:#5b6b7c}
+
+/* about */
+.about{padding:120px 0}
+.about .cols{display:grid;grid-template-columns:1fr 1fr;gap:70px;align-items:center}
+.about h2,.sec h2{font-size:clamp(2rem,4vw,3.1rem);margin-bottom:24px}
+.about p{margin-bottom:18px;color:#3d4b5a}
+.about .pic{position:relative}
+.about .pic .px{height:520px}
+.about .pic div{position:absolute;left:-22px;bottom:30px;background:var(--accent);color:#fff;padding:22px 26px}
+.about .pic b{font-size:2.6rem;display:block;line-height:1}
+.ticks{list-style:none;margin:22px 0 30px}
+.ticks li{padding-left:28px;position:relative;margin-bottom:10px;font-weight:600;font-size:.9rem}
+.ticks li::before{content:"\2713";position:absolute;left:0;color:var(--accent);font-weight:800}
+
+/* services */
+.services{background:#f2f6fa;padding:110px 0}
+.sgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(340px,1fr));gap:26px;margin-top:44px}
+.svc{background:#fff;overflow:hidden;transition:.25s;box-shadow:0 2px 14px rgba(10,22,34,.06)}
+.svc:hover{transform:translateY(-6px);box-shadow:0 12px 30px rgba(10,22,34,.14)}
+.svc img{height:200px;width:100%;object-fit:cover}
+.svc .b{padding:26px}
+.svc h3{font-size:1.05rem;margin-bottom:10px}
+.svc p{font-size:.88rem;color:#4a5a6b;margin-bottom:14px}
+.svc a{font-size:.7rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--accent)}
+
+/* portfolio */
+.cases{background:var(--ink2);color:#fff;padding:110px 0}
+.cases h2{font-size:clamp(2rem,4vw,3.1rem);margin-bottom:30px}
+.filters{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:40px}
+.filters button{background:none;border:1px solid var(--line);color:#cfdcea;font:600 .7rem Montserrat;letter-spacing:.14em;text-transform:uppercase;padding:10px 18px;cursor:pointer;transition:.2s}
+.filters button:hover,.filters button.on{background:var(--accent);border-color:var(--accent);color:#fff}
+.cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(270px,1fr));gap:24px}
+.card{background:var(--ink);border:1px solid var(--line);cursor:pointer;transition:.25s;display:flex;flex-direction:column}
+.card:hover{transform:translateY(-6px);border-color:var(--accent)}
+.card .th{height:180px;position:relative;overflow:hidden}
+.card .th img{width:100%;height:100%;object-fit:cover;transition:.4s}.card:hover .th img{transform:scale(1.07)}
+.card .th em{position:absolute;left:12px;bottom:12px;font-style:normal;font-size:.62rem;letter-spacing:.16em;text-transform:uppercase;font-weight:700;background:var(--accent);padding:4px 10px}
+.card .body{padding:20px;flex:1;display:flex;flex-direction:column}
+.card h3{font-size:.95rem;margin-bottom:8px;line-height:1.3}
+.card p{font-size:.82rem;color:var(--mute);flex:1}
+.card .meta{margin-top:14px;font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;display:flex;justify-content:space-between;color:#cfdcea}
+.card .meta span:last-child{color:var(--accent);font-weight:700}
+
+/* modal */
+.modal{position:fixed;inset:0;background:rgba(0,0,0,.82);z-index:100;display:none;align-items:center;justify-content:center;padding:24px}
+.modal.open{display:flex}
+.sheet{background:#fff;max-width:780px;width:100%;max-height:90vh;overflow:auto;position:relative}
+.sheet img{width:100%;height:260px;object-fit:cover}
+.sheet .in{padding:34px}
+.sheet h3{font-size:1.5rem;margin-bottom:6px}
+.sheet .sub{color:var(--accent);font-weight:700;font-size:.75rem;letter-spacing:.14em;text-transform:uppercase;margin-bottom:18px}
+.sheet p{color:#3d4b5a;margin-bottom:14px}
+.facts{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin:20px 0}
+.facts div{background:#f2f6fa;padding:12px 14px;font-weight:600}
+.facts b{display:block;font-size:.62rem;letter-spacing:.14em;text-transform:uppercase;color:#6b7c8e}
+.close{position:absolute;right:12px;top:6px;background:rgba(10,22,34,.7);color:#fff;border:0;width:38px;height:38px;font-size:1.6rem;cursor:pointer;z-index:2}
+
+/* process */
+.process{padding:110px 0}
+.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:26px;margin-top:44px;counter-reset:s}
+.step{border-top:4px solid var(--accent);padding-top:22px}
+.step::before{counter-increment:s;content:"0" counter(s);font-size:2.4rem;font-weight:800;color:#d5e3f1;display:block;line-height:1}
+.step h3{font-size:.95rem;margin:10px 0 8px}.step p{font-size:.88rem;color:#4a5a6b}
+
+/* team */
+.team{background:#f2f6fa;padding:110px 0}
+.people{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:28px;margin-top:44px}
+.person .ph{aspect-ratio:1;display:flex;align-items:center;justify-content:center;font-size:2.6rem;font-weight:800;color:#fff;margin-bottom:16px;background:linear-gradient(135deg,var(--accent2),var(--ink2))}
+.person h3{font-size:.95rem}.person .role{font-size:.8rem;color:#5b6b7c}
+.person .lic{font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;color:var(--accent);font-weight:700;margin-top:4px}
+
+/* reviews */
+.reviews{background:var(--ink);color:#fff;padding:100px 0}
+.rgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:26px;margin-top:40px}
+.rev{border:1px solid var(--line);padding:30px}
+.rev .st{color:#ffb800;letter-spacing:.2em;margin-bottom:14px}
+.rev p{font-size:.92rem;color:#cfdcea;margin-bottom:16px}
+.rev b{font-size:.78rem;letter-spacing:.1em;text-transform:uppercase}
+
+/* areas + contact */
+.areas{padding:90px 0 40px}
+.chips{display:flex;flex-wrap:wrap;gap:10px;margin-top:24px}
+.chips span{border:1px solid #cfdcea;padding:8px 16px;font-size:.78rem;font-weight:600}
+.contact{padding:90px 0 110px}
+.cbox{display:grid;grid-template-columns:1fr 1fr;background:var(--accent2);color:#fff}
+.cbox .l{padding:50px}
+.cbox h2{font-size:clamp(1.8rem,3.5vw,2.6rem);margin-bottom:16px}
+.cbox .l p{margin-bottom:12px}
+.cbox .big{font-size:1.8rem;font-weight:800;margin-top:16px;display:block}
+form{background:#fff;padding:44px;display:grid;gap:14px}
+form input,form select,form textarea{font:500 .9rem Montserrat;padding:13px 14px;border:1px solid #cfdcea;width:100%;color:#13202e}
+form .btn{width:100%}
+.ok{display:none;color:#0a7a3d;font-weight:700;font-size:.85rem}
+
+footer{background:#050c14;color:#9db3c8;padding:60px 0 30px;font-size:.8rem}
+.fgrid{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:40px;margin-bottom:36px}
+footer h4{color:#fff;font-size:.72rem;letter-spacing:.18em;text-transform:uppercase;margin-bottom:14px}
+footer li{list-style:none;margin-bottom:8px}footer a:hover{color:var(--accent)}
+.legal{border-top:1px solid var(--line);padding-top:20px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px}
+
+.reveal{opacity:0;transform:translateY(26px);transition:.7s}
+.reveal.in{opacity:1;transform:none}
+@media(max-width:860px){
+ .nav ul{position:fixed;inset:76px 0 auto 0;background:var(--ink);flex-direction:column;padding:26px;gap:22px;display:none}
+ .nav ul.open{display:flex}.burger{display:block}
+ .about .cols,.fgrid,.cbox{grid-template-columns:1fr}
+ .steps{grid-template-columns:1fr 1fr}
+ .pcols{grid-template-columns:1fr}.pcol{border-right:0;border-bottom:1px solid rgba(255,255,255,.2)}.statement{padding:100px 0}
+ .stats .srow{grid-template-columns:1fr;gap:56px}.stats .photo .px{height:380px}.stats .badge{right:10px}
+ .about .pic div{left:10px}.sgrid{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+<div class="loader" id="loader"><div class="hwrap"><svg class="hsvg" viewBox="0 0 380 270" role="img" aria-label="Loading"><defs>
+<linearGradient id="gSteelV" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#5b6d83"/><stop offset=".28" stop-color="#f3f7fc"/><stop offset=".55" stop-color="#9fb0c4"/><stop offset="1" stop-color="#46586e"/></linearGradient>
+<linearGradient id="gFace" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#ffffff"/><stop offset=".5" stop-color="#b4c2d3"/><stop offset="1" stop-color="#6f8097"/></linearGradient>
+<linearGradient id="gWood" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#e2a972"/><stop offset=".5" stop-color="#b8723f"/><stop offset="1" stop-color="#7a4423"/></linearGradient>
+<linearGradient id="gGrip" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#2c3d52"/><stop offset="1" stop-color="#0f1a27"/></linearGradient>
+<linearGradient id="gGold" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#ffe9a8"/><stop offset=".5" stop-color="#d4a62f"/><stop offset="1" stop-color="#8f6a14"/></linearGradient>
+<linearGradient id="gChrome" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#eaf1f9"/><stop offset=".22" stop-color="#9fb4cb"/><stop offset=".55" stop-color="#46617f"/><stop offset=".8" stop-color="#8aa2bb"/><stop offset="1" stop-color="#2a3f58"/></linearGradient>
+<linearGradient id="gCopper" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#ffd0a6"/><stop offset=".35" stop-color="#d98b52"/><stop offset=".7" stop-color="#a8531f"/><stop offset="1" stop-color="#6d3010"/></linearGradient>
+<linearGradient id="gSwoosh" gradientUnits="userSpaceOnUse" x1="246" y1="23" x2="182" y2="138"><stop offset="0" stop-color="#9fd0ff" stop-opacity="0"/><stop offset="1" stop-color="#ffffff" stop-opacity=".95"/></linearGradient>
+<radialGradient id="gFlash"><stop offset="0" stop-color="#fff"/><stop offset=".35" stop-color="#ffd27a" stop-opacity=".8"/><stop offset="1" stop-color="#ff8a2a" stop-opacity="0"/></radialGradient>
+<radialGradient id="gFloor"><stop offset="0" stop-color="#1e90ff" stop-opacity=".45"/><stop offset="1" stop-color="#1e90ff" stop-opacity="0"/></radialGradient>
+</defs>
+<ellipse cx="190" cy="236" rx="170" ry="22" fill="url(#gFloor)"/>
+<rect x="58" y="222" width="264" height="16" rx="6" fill="#142a42"/><rect x="58" y="222" width="264" height="3" rx="1.5" fill="rgba(255,255,255,.28)"/>
+<g class="pipe">
+<rect x="96" y="168" width="188" height="50" rx="13" fill="url(#gChrome)"/>
+<rect x="106" y="174" width="168" height="6" rx="3" fill="#fff" opacity=".6"/>
+<rect x="84" y="160" width="30" height="66" rx="8" fill="url(#gCopper)"/><rect x="89" y="160" width="3" height="66" fill="rgba(0,0,0,.28)"/><rect x="97" y="160" width="3" height="66" fill="rgba(255,255,255,.28)"/>
+<rect x="266" y="160" width="30" height="66" rx="8" fill="url(#gCopper)"/><rect x="280" y="160" width="3" height="66" fill="rgba(0,0,0,.28)"/><rect x="288" y="160" width="3" height="66" fill="rgba(255,255,255,.28)"/>
+<rect x="176" y="163" width="28" height="60" rx="6" fill="url(#gCopper)"/><rect x="176" y="163" width="28" height="5" rx="2" fill="rgba(255,255,255,.4)"/>
+</g>
+<path class="swoosh" d="M246 23 A136 136 0 0 0 182 138" fill="none" stroke="url(#gSwoosh)" stroke-width="9" stroke-linecap="round"/>
+<circle class="flash" cx="190" cy="166" r="34" fill="url(#gFlash)"/>
+<ellipse class="shock" cx="190" cy="170" rx="22" ry="6" fill="none" stroke="#bfe0ff" stroke-width="2.5"/>
+<g transform="translate(190 164)"><g class="sp"><line x1="2.8" y1="-8.6" x2="11.7" y2="-36.1"/><line x1="7.3" y1="-5.3" x2="19.4" y2="-14.1"/><line x1="9.0" y1="0.0" x2="38.0" y2="0.0"/><line x1="7.3" y1="5.3" x2="19.4" y2="14.1"/><line x1="2.8" y1="8.6" x2="11.7" y2="36.1"/><line x1="-2.8" y1="8.6" x2="-7.4" y2="22.8"/><line x1="-7.3" y1="5.3" x2="-30.7" y2="22.3"/><line x1="-9.0" y1="0.0" x2="-24.0" y2="0.0"/><line x1="-7.3" y1="-5.3" x2="-30.7" y2="-22.3"/><line x1="-2.8" y1="-8.6" x2="-7.4" y2="-22.8"/></g></g>
+<g transform="translate(318 138)"><g class="hammer">
+<rect x="-112" y="-7.5" width="118" height="15" rx="7.5" fill="url(#gWood)"/><path d="M-108 -4 q10 -2 22 0" stroke="rgba(60,30,10,.35)" stroke-width="1" fill="none"/><path d="M-94 -1 q10 -2 22 0" stroke="rgba(60,30,10,.35)" stroke-width="1" fill="none"/><path d="M-80 -4 q10 -2 22 0" stroke="rgba(60,30,10,.35)" stroke-width="1" fill="none"/><path d="M-66 -1 q10 -2 22 0" stroke="rgba(60,30,10,.35)" stroke-width="1" fill="none"/><path d="M-52 -4 q10 -2 22 0" stroke="rgba(60,30,10,.35)" stroke-width="1" fill="none"/>
+<rect x="-112" y="-7.5" width="118" height="4" rx="2" fill="rgba(255,255,255,.28)"/>
+<rect x="-34" y="-9" width="46" height="18" rx="7" fill="url(#gGrip)"/><rect x="-26" y="-8.5" width="1.6" height="17" fill="rgba(255,255,255,.10)"/><rect x="-21.4" y="-8.5" width="1.6" height="17" fill="rgba(255,255,255,.10)"/><rect x="-16.8" y="-8.5" width="1.6" height="17" fill="rgba(255,255,255,.10)"/><rect x="-12.200000000000001" y="-8.5" width="1.6" height="17" fill="rgba(255,255,255,.10)"/><rect x="-7.600000000000001" y="-8.5" width="1.6" height="17" fill="rgba(255,255,255,.10)"/><rect x="-3" y="-8.5" width="1.6" height="17" fill="rgba(255,255,255,.10)"/><rect x="1.5999999999999979" y="-8.5" width="1.6" height="17" fill="rgba(255,255,255,.10)"/><rect x="6.199999999999996" y="-8.5" width="1.6" height="17" fill="rgba(255,255,255,.10)"/>
+<rect x="-38" y="-10" width="5" height="20" rx="2" fill="url(#gGold)"/>
+<path d="M-138 -22 C-140 -42 -152 -54 -168 -60 C-150 -64 -126 -58 -116 -36 L-108 -22 Z" fill="url(#gSteelV)"/>
+<path d="M-132 -26 C-134 -40 -143 -50 -156 -57" fill="none" stroke="rgba(20,35,55,.55)" stroke-width="1.6" stroke-linecap="round"/>
+<rect x="-146" y="-24" width="44" height="48" rx="7" fill="url(#gSteelV)"/>
+<rect x="-139" y="-20" width="6" height="40" rx="3" fill="#fff" opacity=".55"/>
+<rect x="-110" y="-6" width="6" height="12" rx="2" fill="url(#gGold)"/>
+<rect x="-150" y="20" width="52" height="13" rx="4" fill="url(#gFace)"/>
+<rect x="-150" y="20" width="52" height="2" fill="rgba(0,0,0,.25)"/>
+</g></g></svg></div><div class="hbar"><i></i></div><div class="hrow"><div class="lnum" id="lnum">0%</div><div class="lbrand"><b>BLUERIDGE</b> PLUMBING &amp; DRAIN<span>Fixing it right, one hit at a time</span></div></div></div>
+<div class="topbar">24/7 EMERGENCY PLUMBING &middot; CALL (555) 010-2468 &middot; OFTEN ON SITE WITHIN 60 MINUTES</div>
+
+<header id="hdr"><div class="wrap nav">
+  <a href="#top" class="logo"><svg viewBox="0 0 32 32" fill="none"><path d="M16 3C16 3 6 14 6 20a10 10 0 0020 0C26 14 16 3 16 3z" fill="#1e90ff"/><path d="M12 21a4 4 0 004 4" stroke="#fff" stroke-width="2" stroke-linecap="round"/></svg>BLUERIDGE PLUMBING</a>
+  <button class="burger" id="burger" aria-label="Menu">&#9776;</button>
+  <ul id="menu">
+    <li><a href="#about">About</a></li><li><a href="#services">Services</a></li>
+    <li><a href="#work">Our Work</a></li><li><a href="#team">Team</a></li>
+    <li><a class="btn cta" href="#contact">Free Estimate<span class="ar"><svg viewBox="0 0 12 12"><path d="M3 9l6-6M4 3h5v5"/></svg></span></a></li>
+  </ul>
+</div></header>
+
+<section class="hero" id="top"><div class="hero-pin">
+  <div id="layers"></div>
+  <div class="hero-shade" id="shade"></div>
+  <div class="in">
+    <div class="eyebrow">Licensed &amp; insured plumbers</div>
+    <h1>Fast fixes.<br><span>Honest prices.</span><br>Done <span class="roll" id="roll" aria-live="polite"></span></h1>
+    <p>From a dripping tap at midnight to a full commercial re-pipe, BlueRidge Plumbing &amp; Drain solves it the first time, with the price quoted before we start.</p>
+    <div class="cta"><a class="btn" href="#contact">Book a plumber</a><a class="btn ghost" href="#work">See our work</a></div>
+    <div class="badges"><span>Upfront pricing</span><span>Same-day service</span><span>1-year workmanship warranty</span></div>
+  </div>
+  <div class="tag" id="tag"></div>
+  <a class="spin" href="#about" aria-label="Scroll down"><svg viewBox="0 0 120 120"><defs><path id="cp" d="M60 60 m-44 0 a44 44 0 1 1 88 0 a44 44 0 1 1 -88 0"/></defs><text><textPath href="#cp" startOffset="0">24/7 EMERGENCY SERVICE • SCROLL DOWN • </textPath></text></svg><i><svg viewBox="0 0 12 12"><path d="M6 2v8M2.5 6.5L6 10l3.5-3.5"/></svg></i></a><div class="bar" id="bar"></div>
+</div></section>
+
+<section class="statement"><div class="wrap pwrap">
+  <div class="eyebrow">Our promise</div>
+  <p class="scrub" id="scrub">We quote it upfront, fix it right and stand behind every job.</p>
+  <div class="pcols">
+    <div class="pcol reveal"><b>01</b><div class="pi"><svg viewBox="0 0 24 24"><path d="M6 3h12v18l-3-2-3 2-3-2-3 2z"/><path d="M9 8h6M9 12h6"/></svg></div><h4>Upfront quotes</h4><p>A fixed price in writing before we start. No hourly meter, no surprises.</p></div>
+    <div class="pcol reveal"><b>02</b><div class="pi"><svg viewBox="0 0 24 24"><path d="M12 3l8 3v6c0 5-3.4 8-8 9-4.6-1-8-4-8-9V6z"/><path d="M8.5 12l2.5 2.5 4.5-5"/></svg></div><h4>Licensed plumbers</h4><p>Background-checked, trained in-house and fully bonded and insured.</p></div>
+    <div class="pcol reveal"><b>03</b><div class="pi"><svg viewBox="0 0 24 24"><circle cx="12" cy="9" r="6"/><path d="M8.5 14L7 21l5-3 5 3-1.5-7"/></svg></div><h4>One-year warranty</h4><p>If our work fails within a year, we come back and make it right.</p></div>
+  </div>
+  <div class="pcta"><a class="btn" href="#contact">Get a free estimate</a><a class="btn ghost" href="tel:5550102468">Call (555) 010-2468</a></div>
+</div></section>
+
+<section class="stats"><div class="wrap srow">
+  <div class="photo reveal">
+    <div class="px"><img data-speed=".14" src="https://images.unsplash.com/photo-1676210134190-3f2c0d5cf58d?auto=format&fit=crop&w=1100&q=70" alt="Plumber installing a water heater" loading="lazy"></div>
+    <div class="badge"><i class="dot"></i><div><small>Emergency line</small><b>(555) 010-2468</b></div></div>
+  </div>
+  <div>
+    <div class="stats-head reveal"><div class="eyebrow">Trusted locally</div>
+      <h2>Plumbing you can count on</h2>
+      <p>Two decades of fixing leaks, installing heaters and keeping homes and businesses running. The record speaks for itself.</p></div>
+    <div class="grid">
+      <div class="stat reveal"><b data-n="18" data-suf="+">0</b><strong>Years in business</strong><span>Licensed, bonded and insured.</span></div>
+      <div class="stat reveal"><b data-n="12000" data-suf="+">0</b><strong>Jobs completed</strong><span>Repairs, installs and remodels.</span></div>
+      <div class="stat reveal"><b data-n="60" data-suf=" min">0</b><strong>Emergency arrival</strong><span>Typical response, 24 hours a day.</span></div>
+      <div class="stat reveal"><b data-n="4.9" data-dec="1" data-suf="/5">0</b><strong>Average rating</strong><span>From verified customer reviews.</span></div>
+    </div>
+  </div>
+</div></section>
+
+<section class="about" id="about"><div class="wrap cols">
+  <div class="reveal">
+    <div class="eyebrow">About us</div>
+    <h2>A family-run crew your neighbours already call.</h2>
+    <p>BlueRidge started with one van and a simple rule: show up on time, explain the problem in plain language, and never charge for work you don't need. Today we are a team of 24 licensed plumbers, apprentices and dispatchers serving homes, restaurants, clinics and property managers.</p>
+    <p>Every technician is background-checked, drug-tested and trained in-house, and every job is photographed and documented so you always know what was done.</p>
+    <ul class="ticks"><li>Fully licensed, bonded and insured</li><li>Clear written quote before work begins</li><li>Clean, shoe-covered, respectful crews</li><li>Backed by a 1-year workmanship warranty</li></ul>
+    <a class="btn" href="#contact">Talk to our team</a>
+  </div>
+  <div class="pic reveal"><div class="px"><img data-speed=".14" src="IMG_ABOUT" alt="Plumber repairing a bathroom" loading="lazy"></div><div><b>1 yr</b>workmanship warranty</div></div>
+</div></section>
+
+<section class="svcs" id="services" aria-roledescription="carousel" aria-label="Our services">
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
+    <linearGradient id="sg1" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#9fd2ff"/><stop offset="1" stop-color="#1e90ff"/></linearGradient>
+    <linearGradient id="sg2" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#2b5f9a"/><stop offset="1" stop-color="#0b2a4a"/></linearGradient>
+  </defs></svg>
+  <i class="sv-blob b1"></i><i class="sv-blob b2"></i>
+  <div class="wrap sv-head">
+    <div class="eyebrow">What we do</div>
+    <h2>Our services</h2>
+    <p>Six specialties, one licensed crew. Pick a service to see how we handle it.</p>
+  </div>
+  <div class="cv-wrap"><div class="cv" id="cv" tabindex="0" aria-live="polite"></div>
+  <button class="cv-arrow prev" id="cvPrev" aria-label="Previous service"><svg viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7"/></svg></button>
+  <button class="cv-arrow next" id="cvNext" aria-label="Next service"><svg viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"/></svg></button></div>
+  <div class="cv-foot"><span class="cv-count" id="cvCount">01 / 06</span><div class="cv-dots" id="cvDots"></div></div>
+</section>
+
+<section class="cases" id="work"><div class="wrap">
+  <div class="eyebrow">Portfolio</div><h2>Recent projects</h2>
+  <div class="filters" id="filters"></div>
+  <div class="cards" id="cards"></div>
+</div></section>
+
+<section class="process sec"><div class="wrap">
+  <div class="eyebrow">How it works</div><h2>Four simple steps</h2>
+  <div class="steps">
+    <div class="step reveal"><h3>Call or book</h3><p>Tell us what's wrong. We dispatch the closest tech, often within the hour.</p></div>
+    <div class="step reveal"><h3>Diagnose</h3><p>We find the root cause and show you exactly what we see.</p></div>
+    <div class="step reveal"><h3>Upfront quote</h3><p>You approve a fixed price in writing. No surprises, no hourly meter.</p></div>
+    <div class="step reveal"><h3>Fix &amp; follow-up</h3><p>We repair, clean up, test everything, and check in after.</p></div>
+  </div>
+</div></section>
+
+<section class="team sec" id="team"><div class="wrap">
+  <div class="eyebrow">Our people</div><h2>Meet the crew</h2>
+  <div class="people" id="people"></div>
+</div></section>
+
+<section class="reviews sec"><div class="wrap">
+  <div class="eyebrow">Reviews</div><h2>What customers say</h2>
+  <div class="rgrid" id="rgrid"></div>
+</div></section>
+
+<section class="areas sec"><div class="wrap">
+  <div class="eyebrow">Service area</div><h2>Where we work</h2>
+  <div class="chips" id="chips"></div>
+</div></section>
+
+<section class="contact" id="contact"><div class="wrap"><div class="cbox">
+  <div class="l"><h2>Get your free estimate</h2>
+    <p>Tell us about the job and we'll reply within one business hour. Emergencies? Call now, a live person answers 24/7.</p>
+    <span class="big">(555) 010-2468</span><p style="margin-top:14px">hello@blueridgeplumbing.example<br>Mon&ndash;Sun, 24 hours</p></div>
+  <form id="form">
+    <input required placeholder="Full name"><input required type="tel" placeholder="Phone number">
+    <select><option>Leak or burst pipe</option><option>Clogged drain</option><option>Water heater</option><option>Bathroom or kitchen remodel</option><option>Commercial plumbing</option><option>Other</option></select>
+    <textarea rows="3" placeholder="Describe the problem"></textarea>
+    <button class="btn" type="submit">Request a callback</button><div class="ok" id="ok">Thanks! (Demo form: nothing was sent.)</div>
+  </form>
+</div></div></section>
+
+<footer><div class="wrap">
+  <div class="fgrid">
+    <div><div class="logo" style="color:#fff;margin-bottom:14px">BLUERIDGE PLUMBING &amp; DRAIN</div><p>Licensed residential and commercial plumbers. License #PL-000000 (demo).</p></div>
+    <div><h4>Explore</h4><ul><li><a href="#about">About</a></li><li><a href="#services">Services</a></li><li><a href="#work">Projects</a></li><li><a href="#team">Team</a></li></ul></div>
+    <div><h4>Services</h4><ul id="fsvc"></ul></div>
+  </div>
+  <div class="legal"><span>&copy; 2026 BlueRidge Plumbing &amp; Drain. Demo site with placeholder content.</span><span>Photos: Unsplash</span></div>
+</div></footer>
+
+<div class="modal" id="modal"><div class="sheet" id="sheet" data-lenis-prevent></div></div>
+
+<script src="https://unpkg.com/lenis@1.3.17/dist/lenis.min.js"></script>
+<script>
+const U=(id,w=900)=>`https://images.unsplash.com/photo-${id}?auto=format&fit=crop&w=${w}&q=70`;
+const IMG={
+ wall:"1676210134188-4c05dd172f89", bath:"1749532125405-70950966b0e5", faucet:"1542013936693-884638332954",
+ valve:"1761758674188-2b8e4c89c5e2", heater:"1676210134190-3f2c0d5cf58d", chrome:"1517646287270-a5a9ca602e5c", toilet:"1676210134050-6f12c6898395"
+};
+/* ===== EDIT THIS DATA TO CHANGE CONTENT ===== */
+const services=[
+ {t:"Leak Detection & Repair",i:"wall",d:"Hidden leaks waste water and rot walls. We locate them with non-invasive tools and repair pipes with minimal mess."},
+ {t:"Water Heaters",i:"heater",d:"Tank and tankless repair, replacement and maintenance, usually installed the same day."},
+ {t:"Drain Cleaning",i:"chrome",d:"Slow sinks, backed-up tubs and main-line clogs cleared with cable machines and camera inspection."},
+ {t:"Bathroom Plumbing",i:"toilet",d:"Toilets, showers, tubs and vanities installed or repaired, plus full remodel rough-ins."},
+ {t:"Kitchen & Fixtures",i:"faucet",d:"Faucets, disposals, dishwashers and filtration systems installed cleanly and tested before we leave."},
+ {t:"Commercial & Backflow",i:"valve",d:"Preventive maintenance, pressure regulation and certified backflow testing for restaurants, clinics and buildings."}
+];
+const projects=[
+ {t:"Burst pipe repair & wall restoration",c:"Emergency",i:"wall",loc:"Maple Heights",time:"4 hours",d:"A frozen supply line split behind a finished wall at 2 a.m. We shut off the water, replaced the damaged section with PEX, and coordinated drywall repair.",x:"Fast shut-off limited the damage to one room."},
+ {t:"Full master bathroom rough-in",c:"Remodel",i:"bath",loc:"Oakview",time:"3 days",d:"New shower valve, double-vanity supply and drain lines, and a relocated toilet flange for a complete master bath remodel.",x:"Relocating the drain required cutting and re-pitching the slab line."},
+ {t:"Tankless water heater upgrade",c:"Water Heaters",i:"heater",loc:"Riverside",time:"1 day",d:"Replaced a 15-year-old 50-gallon tank with a high-efficiency tankless unit, new gas line sizing and venting.",x:"Cut the family's gas use and freed up garage floor space."},
+ {t:"Kitchen faucet & filtration install",c:"Remodel",i:"faucet",loc:"Lakeside",time:"3 hours",d:"Installed a pull-down faucet with under-sink reverse-osmosis filtration and a dedicated drinking tap.",x:"Hidden shut-offs were added for easy future service."},
+ {t:"Restaurant main drain clearing",c:"Commercial",i:"chrome",loc:"Downtown",time:"2 hours",d:"Grease-clogged main line cleared after hours with camera inspection and hydro-jetting so the dining room opened on time.",x:"We set up a quarterly maintenance plan to prevent repeats."},
+ {t:"Backflow testing & valve replacement",c:"Commercial",i:"valve",loc:"Industrial Park",time:"1 day",d:"Annual certified backflow testing for a 12-unit property plus replacement of two failed pressure-reducing valves.",x:"Documentation filed with the water authority the same day."},
+ {t:"Guest bath toilet & fixture replacement",c:"Remodel",i:"toilet",loc:"Cedar Grove",time:"5 hours",d:"Removed an aging toilet, repaired a damaged flange and installed a water-saving model with new supply lines.",x:"Subfloor around the flange was reinforced before setting the new unit."},
+ {t:"Hidden leak detection",c:"Emergency",i:"bath",loc:"Greenfield",time:"3 hours",d:"A rising water bill led to a slab-leak survey. We pinpointed a pinhole leak and rerouted a short line overhead.",x:"No concrete was broken; rerouting avoided a major repair."}
+];
+const team=[["Daniel Brooks","Owner & Master Plumber","Master lic. #1042"],["Priya Nair","Operations Manager","Dispatch & scheduling"],["Marcus Reed","Lead Service Technician","Journeyman lic. #2218"],["Elena Costa","Commercial Specialist","Backflow certified"]];
+const reviews=[
+ ["Showed up within the hour after our pipe burst and had water back on by lunch. Polite, tidy and fairly priced.","Sarah M."],
+ ["Quoted the price up front and stuck to it. Our new water heater was in before dinner.","James T."],
+ ["We use BlueRidge for all our restaurant plumbing. Never had a job that needed a second visit.","Chef Alvarez"]
+];
+const areas=["Maple Heights","Oakview","Riverside","Lakeside","Downtown","Cedar Grove","Greenfield","Industrial Park","Hillcrest","Westbrook"];
+/* =========================================== */
+const $=id=>document.getElementById(id);
+// inject hero/about images
+document.querySelector('.pic .px img').src=U(IMG.bath,1000);
+
+/* ===== Scroll-driven hero: pinned scene, clips change with scroll ===== */
+(()=>{
+ const V='https://videos.pexels.com/video-files/';   // free-licence Pexels clips (muted, looping)
+ const scenes=[
+  {photo:IMG.wall,  video:V+'35552752/15064037_1080_1920_30fps.mp4', label:'Pipe connection &amp; repair'},
+  {photo:IMG.faucet,video:V+'33674735/14306126_1280_720_30fps.mp4', label:'Faucet &amp; fixture repair'},
+  {photo:IMG.bath,  video:V+'38412911/16311317_1280_720_50fps.mp4', label:'Under-sink pipe repair'},
+  {photo:IMG.valve, video:V+'27045699/12055845_1366_720_60fps.mp4', label:'Pipe fitting &amp; installation'}
+ ];
+ const layers=$('layers');
+ layers.innerHTML=scenes.map(s=>`<div class="hero-layer" style="background-image:url(${U(s.photo,1800)})"><video muted loop playsinline preload="auto" src="${s.video}"></video></div>`).join('');
+ const L=[...layers.children],VID=L.map(l=>l.querySelector('video')),tag=$('tag');
+ let shown=-1;
+ const hero=document.querySelector('.hero');
+ let target=0,cur=0,last=performance.now();
+ function frame(now){
+  const dt=Math.min((now-last)/1000,.5);last=now;
+  cur+=(target-cur)*(1-Math.pow(.001,dt));                    // time-based smoothing of scroll progress
+  const n=scenes.length;
+  const idx=Math.min(n-1,Math.floor(cur+.0001));            // cur counts scroll "steps"; one clip change per step
+  if(idx!==shown){shown=idx;
+   tag.textContent='';tag.insertAdjacentHTML('beforeend',`<i></i>${scenes[idx].label} <b>0${idx+1}/0${n}</b>`);
+   L.forEach((l,i)=>l.classList.toggle('on',i===idx));           // soft crossfade (CSS transition)
+   VID.forEach((v,i)=>{if(i===idx){v.currentTime=0;v.play().catch(()=>{})}else setTimeout(()=>{if(shown!==i)v.pause()},900)})}
+  const local=Math.min(1,cur-idx);
+  L[idx].style.transform=`scale(${1.02+local*.05})`;             // slow push-in per scene
+  $('shade').style.background=`rgba(10,22,34,${.5+.18*Math.sin(local*Math.PI)})`;
+  $('bar').style.width=(Math.min(1,cur/(n-1))*100)+'%';
+  requestAnimationFrame(frame);
+ }
+ // one step = 80% of the screen height of scrolling. After the 3rd clip change (4th clip showing) the banner holds half a step, then unpins.
+ const STEP=.8;
+ const upd=()=>{const r=hero.getBoundingClientRect();target=Math.max(0,-r.top)/(innerHeight*STEP)};
+ addEventListener('scroll',upd,{passive:true});addEventListener('resize',upd);upd();cur=target;
+ requestAnimationFrame(frame);
+})();
+
+$('fsvc').innerHTML=services.map(s=>`<li><a href="#services">${s.t}</a></li>`).join('');
+
+const cats=["All",...new Set(projects.map(p=>p.c))];
+$('filters').innerHTML=cats.map((s,i)=>`<button class="${i?'':'on'}" data-s="${s}">${s}</button>`).join('');
+function render(cat="All"){
+ $('cards').innerHTML=projects.map((p,i)=>({p,i})).filter(o=>cat=="All"||o.p.c==cat).map(({p,i})=>`
+ <article class="card" data-i="${i}"><div class="th"><img src="${U(IMG[p.i],600)}" alt="${p.t}" loading="lazy"><em>${p.c}</em></div>
+ <div class="body"><h3>${p.t}</h3><p>${p.d.slice(0,100)}…</p><div class="meta"><span>${p.loc}</span><span>Details</span></div></div></article>`).join('')}
+render();
+$('filters').onclick=e=>{if(e.target.tagName!='BUTTON')return;
+ document.querySelectorAll('#filters button').forEach(b=>b.classList.toggle('on',b==e.target));render(e.target.dataset.s)};
+$('cards').onclick=e=>{const c=e.target.closest('.card');if(!c)return;const p=projects[c.dataset.i];
+ $('sheet').innerHTML=`<button class="close" id="x" aria-label="Close">&times;</button><img src="${U(IMG[p.i],1200)}" alt="${p.t}">
+ <div class="in"><div class="sub">${p.c} · ${p.loc}</div><h3>${p.t}</h3>
+ <div class="facts"><div><b>Category</b>${p.c}</div><div><b>Location</b>${p.loc}</div><div><b>Time on site</b>${p.time}</div></div>
+ <p>${p.d}</p><p><strong>Key detail:</strong> ${p.x}</p><a class="btn" href="#contact" id="inq">Get a similar quote</a></div>`;
+ $('modal').classList.add('open');$('x').onclick=closeM;$('inq').onclick=closeM};
+const closeM=()=>$('modal').classList.remove('open');
+$('modal').onclick=e=>{if(e.target.id=='modal')closeM()};
+document.onkeydown=e=>{if(e.key=='Escape')closeM()};
+
+$('people').innerHTML=team.map(([n,r,l])=>`<div class="person reveal"><div class="ph">${n.split(' ').map(w=>w[0]).join('')}</div><h3>${n}</h3><div class="role">${r}</div><div class="lic">${l}</div></div>`).join('');
+$('rgrid').innerHTML=reviews.map(([t,n])=>`<div class="rev reveal"><div class="st">★★★★★</div><p>“${t}”</p><b>${n}</b></div>`).join('');
+$('chips').innerHTML=areas.map(a=>`<span>${a}</span>`).join('');
+$('form').onsubmit=e=>{e.preventDefault();$('ok').style.display='block';e.target.reset()};
+
+const hdr=$('hdr');addEventListener('scroll',()=>hdr.classList.toggle('solid',scrollY>40));
+$('burger').onclick=()=>$('menu').classList.toggle('open');$('menu').onclick=()=>$('menu').classList.remove('open');
+
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(!e.isIntersecting)return;e.target.classList.add('in');
+ const b=e.target.querySelector('b[data-n]');if(b){const n=+b.dataset.n,suf=b.dataset.suf||'',d=+b.dataset.dec||0;let t0;
+  const f=t=>{t0??=t;const k=Math.min((t-t0)/1400,1);b.innerHTML=(n*(1-Math.pow(1-k,3))).toFixed(d).replace(/\B(?=(\d{3})+(?!\d))/g,',')+(suf?`<small>${suf}</small>`:'');if(k<1)requestAnimationFrame(f)};requestAnimationFrame(f)}
+ io.unobserve(e.target)}),{threshold:.15});
+/* stagger siblings inside each grid */
+['people','rgrid'].forEach(id=>[...$(id).children].forEach((c,i)=>c.style.transitionDelay=(i%3)*110+'ms'));
+document.querySelectorAll('.steps .reveal,.stats .grid .reveal').forEach((c,i)=>c.style.transitionDelay=(i%4)*110+'ms');
+document.querySelectorAll('.reveal').forEach(n=>io.observe(n));
+
+/* headings: split into words, slide up when scrolled into view */
+document.querySelectorAll('h2').forEach(h=>{
+ h.innerHTML=h.textContent.trim().split(/\s+/).map((w,i)=>`<span class="w"><span style="transition-delay:${i*70}ms">${w}</span></span>`).join(' ');
+ h.classList.add('split');io.observe(h)});
+
+/* hero headline: rolling word, letter by letter */
+(()=>{
+ const el=$('roll'),words=['right','on time','clean','first time'];let i=0;
+ const build=w=>{el.innerHTML=[...w].map(c=>`<span class="l pre">${c==' '?'&nbsp;':c}</span>`).join('')};
+ const inn=()=>{const ls=[...el.children];ls.forEach((l,k)=>l.style.transitionDelay=(k*45)+'ms');
+  requestAnimationFrame(()=>requestAnimationFrame(()=>ls.forEach(l=>l.classList.remove('pre'))))};
+ const out=()=>{const ls=[...el.children];ls.forEach((l,k)=>l.style.transitionDelay=(k*35)+'ms');ls.forEach(l=>l.classList.add('out'))};
+ build(words[0]);
+ // start rolling once the preloader has lifted and the headline has sharpened in
+ addEventListener('siteready',()=>{setTimeout(inn,1900);
+  setInterval(()=>{out();setTimeout(()=>{i=(i+1)%words.length;build(words[i]);inn()},650+words[i].length*35)},4200)},{once:true});
+})();
+
+
+
+/* parallax: photos drift against the scroll inside their frames */
+(()=>{
+ const els=[...document.querySelectorAll('[data-speed]')];if(!els.length)return;
+ const upd=()=>{const vh=innerHeight;els.forEach(el=>{const r=el.parentElement.getBoundingClientRect();
+  if(r.bottom<-50||r.top>vh+50)return;const p=(r.top+r.height/2-vh/2)/vh;                // -1..1 around screen centre
+  el.style.transform='translate3d(0,'+(p*-(+el.dataset.speed)*r.height)+'px,0)'})};
+ addEventListener('scroll',upd,{passive:true});addEventListener('resize',upd);upd();
+})();
+
+
+/* ===== services carousel: coverflow, autoplay, swipe, keyboard, tilt ===== */
+(()=>{
+ const stage=$('cv'),n=services.length,DUR=5200;
+ const P='stroke="#0b2a4a" stroke-width="2.4" stroke-linejoin="round" stroke-linecap="round"';
+ const ICONS=[
+  /* leak: pipe + falling drop */ '<svg viewBox="0 0 64 64"><path d="M6 20h30a10 10 0 0110 10v8" fill="none" stroke="#0b2a4a" stroke-width="11" stroke-linecap="round"/><path d="M6 20h30a10 10 0 0110 10v8" fill="none" stroke="url(#sg1)" stroke-width="6" stroke-linecap="round"/><path d="M46 42s8 8.5 8 13.5a8 8 0 01-16 0C38 50.500 46 42 46 42z" fill="url(#sg1)" '+P+'/><path d="M43 55a3.200 3.200 0 003 3" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round"/></svg>',
+  /* water heater: tank + flame */ '<svg viewBox="0 0 64 64"><rect x="17" y="5" width="30" height="42" rx="9" fill="url(#sg1)" '+P+'/><circle cx="32" cy="18" r="5.500" fill="#fff" '+P+'/><path d="M32 18l3-3" stroke="#0b2a4a" stroke-width="2" stroke-linecap="round"/><rect x="24" y="28" width="16" height="4" rx="2" fill="#0b2a4a" opacity=".35"/><path d="M32 60c-6-4-7-9-3.500-13.500 1 3 3.500 3.500 3.500 3.500s2.500-4.500 0-9c7 3.500 10.500 11 6.500 16.500-1.500 2-3.500 3-6.500 2.500z" fill="#ffb347" '+P+'/></svg>',
+  /* drain: grate + ripples */ '<svg viewBox="0 0 64 64"><ellipse cx="32" cy="34" rx="26" ry="20" fill="url(#sg2)" '+P+'/><ellipse cx="32" cy="32" rx="21" ry="15" fill="url(#sg1)" '+P+'/><path d="M17 32h30M32 18v28M22 22l20 20M42 22L22 42" stroke="#0b2a4a" stroke-width="2.200" stroke-linecap="round"/><path d="M10 54c6 3 38 3 44 0" fill="none" stroke="#7cc4ff" stroke-width="2.400" stroke-linecap="round"/></svg>',
+  /* bathroom: shower head + drops */ '<svg viewBox="0 0 64 64"><path d="M12 28a20 20 0 0140 0z" fill="url(#sg1)" '+P+'/><path d="M32 8V3M32 3h15v9" fill="none" stroke="#0b2a4a" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/><path d="M18 36v7M26 36v10M34 36v7M42 36v10M50 34v6" stroke="#1e90ff" stroke-width="3.500" stroke-linecap="round"/><path d="M22 52v5M30 53v6M38 52v5M46 51v5" stroke="#7cc4ff" stroke-width="3" stroke-linecap="round"/></svg>',
+  /* kitchen: faucet */ '<svg viewBox="0 0 64 64"><path d="M20 58V30a14 14 0 0128 0v8" fill="none" stroke="#0b2a4a" stroke-width="12" stroke-linecap="round"/><path d="M20 58V30a14 14 0 0128 0v8" fill="none" stroke="url(#sg1)" stroke-width="7" stroke-linecap="round"/><rect x="42" y="36" width="12" height="7" rx="2" fill="#0b2a4a"/><path d="M48 49s4 4.500 4 7.500a4 4 0 01-8 0c0-3 4-7.500 4-7.500z" fill="url(#sg1)" '+P+'/><rect x="14" y="56" width="16" height="6" rx="3" fill="#0b2a4a"/></svg>',
+  /* commercial: valve wheel on pipe */ '<svg viewBox="0 0 64 64"><rect x="3" y="38" width="58" height="15" rx="5" fill="url(#sg1)" '+P+'/><rect x="3" y="35" width="8" height="21" rx="3" fill="#0b2a4a"/><rect x="53" y="35" width="8" height="21" rx="3" fill="#0b2a4a"/><path d="M32 38V22" stroke="#0b2a4a" stroke-width="5" stroke-linecap="round"/><circle cx="32" cy="16" r="12" fill="#ff5a4f" '+P+'/><circle cx="32" cy="16" r="4" fill="#0b2a4a"/><path d="M32 4v24M20 16h24" stroke="#0b2a4a" stroke-width="2.400" stroke-linecap="round"/></svg>'
+ ];
+ const chev='<svg viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"/></svg>';
+ stage.innerHTML=services.map((s,i)=>'<article class="sc" data-i="'+i+'" aria-roledescription="slide" aria-label="'+(i+1)+' of '+n+'"><div class="sc-ic">'+ICONS[i]+'</div><div class="sc-tx"><h3>'+s.t+'</h3><p>'+s.d+'</p><a class="sc-ln" href="#contact">Explore this service '+chev+'</a></div><i class="sc-pg"></i></article>').join('');
+ stage.style.setProperty('--dur',DUR+'ms');
+ const cards=[...stage.children],dots=$('cvDots'),count=$('cvCount');
+ dots.innerHTML=services.map((_,i)=>'<button aria-label="Go to service '+(i+1)+'"></button>').join('');
+ const dotEls=[...dots.children];
+ let cur=0,timer=null,paused=false,inView=false;
+ const pad=v=>String(v).padStart(2,'0');
+ function layout(){
+  const w=stage.clientWidth,gap=w<760?w*.74:Math.min(w*.352,450);
+  cards.forEach((c,i)=>{let o=((i-cur)%n+n)%n;if(o>n/2)o-=n;const a=Math.abs(o);
+   c.style.setProperty('--x',(o*gap)+'px');c.style.setProperty('--s',a===0?1.06:a===1?.8:.58);c.style.setProperty('--ry',(-o*13)+'deg');
+   c.style.zIndex=10-a;c.style.opacity=a<=1?1:0;c.style.pointerEvents=a<=1?'auto':'none';
+   c.classList.toggle('is-on',a===0);c.classList.toggle('is-side',a===1);c.setAttribute('aria-hidden',a>0?'true':'false');
+   c.querySelector('a').tabIndex=a===0?0:-1});
+  dotEls.forEach((d,i)=>d.classList.toggle('on',i===cur));count.textContent=pad(cur+1)+' / '+pad(n);
+ }
+ function restartProgress(){const pg=cards[cur].querySelector('.sc-pg');pg.style.animation='none';void pg.offsetWidth;pg.style.animation='';}
+ function schedule(){clearTimeout(timer);if(paused||!inView)return;timer=setTimeout(()=>go(1),DUR)}
+ function go(d){cur=(cur+d+n)%n;layout();restartProgress();schedule()}
+ function goTo(i){cur=i;layout();restartProgress();schedule()}
+ layout();addEventListener('resize',layout);
+ $('cvNext').onclick=()=>go(1);$('cvPrev').onclick=()=>go(-1);
+ dotEls.forEach((d,i)=>d.onclick=()=>goTo(i));
+ cards.forEach(c=>c.addEventListener('click',e=>{const i=+c.dataset.i;if(i!==cur&&!e.target.closest('.sc-ln')){e.preventDefault();goTo(i)}}));
+ stage.addEventListener('keydown',e=>{if(e.key==='ArrowRight')go(1);if(e.key==='ArrowLeft')go(-1)});
+ // swipe / drag
+ let sx=null;stage.addEventListener('pointerdown',e=>{sx=e.clientX});
+ addEventListener('pointerup',e=>{if(sx===null)return;const dx=e.clientX-sx;sx=null;if(Math.abs(dx)>60)go(dx<0?1:-1)});
+ // pause while hovering the carousel; autoplay only while on screen
+ const sec=document.getElementById('services');
+ stage.addEventListener('mouseenter',()=>{paused=true;stage.classList.add('paused');clearTimeout(timer)});
+ stage.addEventListener('mouseleave',()=>{paused=false;stage.classList.remove('paused');restartProgress();schedule()});
+ new IntersectionObserver(es=>{inView=es[0].isIntersecting;if(inView){restartProgress();schedule()}else clearTimeout(timer)},{threshold:.35}).observe(sec);
+ // 3D tilt on the active card + background blobs follow the pointer
+ stage.addEventListener('mousemove',e=>{const c=cards[cur],r=c.getBoundingClientRect();
+  if(e.clientX>r.left&&e.clientX<r.right&&e.clientY>r.top&&e.clientY<r.bottom){
+   const px=(e.clientX-r.left)/r.width-.5,py=(e.clientY-r.top)/r.height-.5;
+   c.classList.add('tilting');c.style.setProperty('--ty',(px*9)+'deg');c.style.setProperty('--tx',(-py*8)+'deg')}});
+ stage.addEventListener('mouseleave',()=>cards.forEach(c=>{c.classList.remove('tilting');c.style.setProperty('--ty','0deg');c.style.setProperty('--tx','0deg')}));
+ sec.addEventListener('mousemove',e=>{const r=sec.getBoundingClientRect();sec.style.setProperty('--mx',((e.clientX-r.left)/r.width-.5).toFixed(3));sec.style.setProperty('--my',((e.clientY-r.top)/r.height-.5).toFixed(3))});
+})();
+
+/* promise statement: words fade in as the block scrolls through the screen */
+(()=>{
+ const p=$('scrub');p.innerHTML=p.textContent.trim().split(/\s+/).map(w=>`<span>${w}</span>`).join(' ');
+ const ws=[...p.children];
+ const upd=()=>{const r=p.getBoundingClientRect(),vh=innerHeight;
+  const t=Math.min(1,Math.max(0,(vh*.85-r.top)/(r.height+vh*.35)));
+  ws.forEach((w,i)=>{const a=i/ws.length;w.style.opacity=Math.min(1,.16+Math.max(0,(t*1.15-a)*7)*.84)})};
+ addEventListener('scroll',upd,{passive:true});addEventListener('resize',upd);upd();
+})();
+
+/* smooth scrolling (Lenis, open-source) + smooth anchor links */
+if(window.Lenis){
+ const lenis=window.__lenis=new Lenis({lerp:.09,wheelMultiplier:1});
+ const raf=t=>{lenis.raf(t);requestAnimationFrame(raf)};requestAnimationFrame(raf);
+ document.querySelectorAll('a[href^="#"]').forEach(a=>a.addEventListener('click',e=>{
+  const id=a.getAttribute('href');if(id.length<2)return;const t=document.querySelector(id);if(!t)return;
+  e.preventDefault();lenis.scrollTo(t,{offset:id=='#top'?0:-70,duration:1.4})}));
+}
+
+/* hero headline: wrap every word so it can sharpen out of a blur in turn */
+(()=>{
+ let n=0;
+ const wrap=node=>[...node.childNodes].forEach(c=>{
+  if(c.nodeType===3){const f=document.createDocumentFragment();
+   c.textContent.split(/(\s+)/).forEach(t=>{if(!t)return;if(/^\s+$/.test(t))f.append(t);
+    else{const s=document.createElement('span');s.className='bw';s.style.setProperty('--i',n++);s.textContent=t;f.append(s)}});
+   c.replaceWith(f)}
+  else if(c.classList&&c.classList.contains('roll')){c.classList.add('bw');c.style.setProperty('--i',n++)}
+  else if(c.nodeName==='SPAN')wrap(c)});
+ wrap(document.querySelector('.hero h1'));
+})();
+
+/* preloader: slogan letter by letter + progress bar, then the screen lifts and the hero starts */
+(()=>{
+ const root=document.documentElement,ld=$('loader'),num=$('lnum');
+ root.classList.add('loading');if(window.__lenis)window.__lenis.stop();
+ const t0=performance.now(),DUR=2300;
+ setTimeout(()=>ld.classList.add('go'),60);
+ const tick=setInterval(()=>{const p=Math.min(1,(performance.now()-t0)/DUR);num.textContent=Math.round(p*100)+'%'},60);
+ const finish=()=>{clearInterval(tick);num.textContent='100%';ld.classList.add('hide');
+  setTimeout(()=>{document.body.classList.add('ready');root.classList.remove('loading');if(window.__lenis)window.__lenis.start();
+   dispatchEvent(new Event('siteready'));setTimeout(()=>ld.remove(),600)},650)};
+ const loaded=new Promise(r=>document.readyState==='complete'?r():addEventListener('load',r,{once:true}));
+ Promise.all([loaded,new Promise(r=>setTimeout(r,DUR))]).then(finish);
+ setTimeout(finish,9000);                                     // failsafe if an asset hangs
+})();
+
+
+</script>
+</body>
+</html>
